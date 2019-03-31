@@ -1,48 +1,72 @@
+<h1>คูณจำนวน</h1>
 <div class="input-group">
   <div class="input-group-prepend">
-    <button class="btn btn-success" type="button">ชื่อ</button>
+    <span>ค่าที่1</span>
   </div>
-  <input type="text" class="form-control" [(ngModel)]="name" placeholder="" aria-label="" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" [(ngModel)]="request.key1" placeholder="" aria-label="" aria-describedby="basic-addon1">
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <button class="btn btn-success" type="button">เกรด</button>
+    <span>ค่าที่2</span>
   </div>
-  <input type="number" class="form-control" [(ngModel)]="score" placeholder="" aria-label="" aria-describedby="basic-addon1">
+  <input type="number" class="form-control" [(ngModel)]="request.key2" placeholder="" aria-label="" aria-describedby="basic-addon1">
 </div>
-<span *ngIf="name">ชื่อ {{name}}  </span>
-<span *ngIf="score">คะแนน={{score}}</span>
-<span *ngIf="score>50">เกรดA </span>
-<span *ngIf="score<=50">เกรดF </span><br/>
+<button class="btn btn-success" type="button" (click)="getData1()">คำนวณ</button>
+<span>ผลลัพธ์ {{result}}</span>
 
-<h1 class="text-center">รายชื่อนักเรียน</h1>
-<table class="table">
-  <thead class="thead-dark">
+
+
+<h1>เพิ่ม</h1>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span>ID</span>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="request2.id" placeholder="" aria-label="" aria-describedby="basic-addon1">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span>ชื่อ</span>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="request2.name" placeholder="" aria-label="" aria-describedby="basic-addon1">
+</div>
+<button class="btn btn-success" type="button" (click)="postCreateProfile()">เพิ่ม</button>
+<span>ผลลัพธ์ = {{profile}}</span>
+
+<h1>ค้นหา</h1>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span>ID</span>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="request3.id" placeholder="">
+</div>
+
+<button class="btn btn-success" type="button" (click)="getUserDetail()">ค้นหา</button>
+
+<br/>
+<span >ชื่อ : {{detail.name}}</span> <br>
+<span>ID : {{detail.id}}</span>
+<table class="table table-bordered">
+  <thead>
     <tr>
-      
-      <th>Student ID</th>
-      <th>Name</th>
-      <th>Weight</th>
-      <th>Height</th>
-      <th>BMI</th>
-      <th>BMI result</th>
+      <th>Type</th>
+      <th>View</th>
+      <th>Edit</th>
+     
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let i of student">
-      
-      <td>{{i.studentID}}</td>
+    <tr *ngFor="let i of noteDetail">
       <td>{{i.name}}</td>
-      <td>{{i.weight}}</td>
-      <td>{{i.height}}</td>
-      <td>{{i.bmi}}</td>
-      <td *ngIf="i.bmi>25">  อ้วน </td>
-      <td *ngIf="i.bmi<25">  ผอม </td>
-      <td *ngIf="i.bmi==50"> สมส่วน </td>
+      <td><button class="btn btn-success" type="button" >View</button></td>
+      <td><button class="btn btn-success" type="button" (click)="editName(i)">Edit</button></td>
+ 
     </tr>
-   
   </tbody>
 </table>
+
+
+<input type="text" class="form-control" [(ngModel)]="edit.name" placeholder="">
+<button class="btn btn-success" type="button" (click)=" postNoteDetail()">Edit</button>
 
 
 
