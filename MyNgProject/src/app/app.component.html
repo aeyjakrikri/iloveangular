@@ -1,1 +1,35 @@
-<h1>Workshop2</h1>
+
+<h1 class="text-center">รายการสินค้า</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th>รหัสสินค้า</th>
+      <th>ชื่อสินค้า</th>
+      <th>ราคาสินค้า</th>
+      <th></th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of productList">
+      
+      <td>{{i.productID}}</td>
+      <td>{{i.productName}}</td>
+      <td>{{i.productCost}}</td>
+   
+      <th><button type="button" class="btn btn-dark" (click)="pushData(i)">เลือกสินค้า</button></th>
+    </tr>
+   
+  </tbody>
+</table>
+
+<app-product-detail [ProductData] = "ProductData" ></app-product-detail> 
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
